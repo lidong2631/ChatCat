@@ -1,0 +1,17 @@
+{
+	"host": "http://localhost:3000",
+	"dbURI": "mongodb://chatcatuser:chatcatuser@ds027215.mlab.com:27215/chatcatdb",
+	"sessionSecret": "catscanfly",
+	"fb": {
+		"clientID": "276615769364842",
+		"clientSecret": "c7e5c19c794062cb2597c43850f9bda4",
+		"callbackURL": "//localhost:3000/auth/facebook/callback",
+		"profileFields": ["id", "displayName", "photos"]
+	},
+	"twitter": {
+		"consumerKey": "jZOvSYI6VU8IUJvxLafXOiaZE",
+		"consumerSecret": "5v1SDApVub1DDFOlwJkFhrhwgkIvNBgD29Jng06mZ2gBBW9qkX",
+		"callbackURL": "//localhost:3000/auth/twitter/callback",
+		"profileFields": ["id", "displayName", "photos"]
+	}
+}
