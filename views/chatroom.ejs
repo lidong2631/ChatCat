@@ -10,7 +10,11 @@
 	<script>
 	'use strict';
 	$(() => {
-		let socket = io('<%= host %>' + '/chatter');
+		
+		let socket = io('<%= host %>' + '/chatter', {
+			transports: ['websocket']			// force socket.io to only use websocket no long polling
+		});
+		//let socket = io('<%= host %>' + '/chatter');
 		let roomID = '<%= roomID %>';
 		let user = '<%= user.fullName %>';
 		let userPic = '<%= user.profilePic %>';
