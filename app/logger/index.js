@@ -7,6 +7,11 @@ const logger = new (winston.Logger)({
 			level: 'debug',
 			filename: './chatCatDebug.log',
 			handleExceptions: true
+		}),
+		new (winston.transports.Console)({
+			level: 'debug',
+			json: true,
+			handleExceptions: true
 		})
 	],
 	exitOnError: false
