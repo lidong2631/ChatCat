@@ -10,7 +10,8 @@
 		'use strict';
 		$(() => {
 			
-			let socket = io('<%= host %>' + '/roomslist', {		// /roomslist is not a route it is a socket namespace. It can have sub pipeline
+			let socket = io('<%= host %>' + '/roomslist', {		// /roomslist is not a route it is a socket namespace. It can have sub pipeline to provide
+																												// unique and isolated package of data. One connection but several unique and discrete data pipeline
 				transports: ['websocket'] 		// force socket.io to only use websocket no long polling
 			});
 			//let socket = io('<%= host %>' + '/roomslist');
@@ -18,7 +19,7 @@
 
 			// socket.on('connect', () => console.log('Connected to server!'));
 
-			let renderChatRooms = chatrooms => {							// rnder chatroom
+			let renderChatRooms = chatrooms => {							// define a function renderChatRooms to render chatroom
 				let roomsListDiv = $('#roomsListUL');
 				let listStr = '';
 				for (let chat of chatrooms) {
@@ -28,7 +29,7 @@
 			}
 
 			// Get a list of chatrooms
-			socket.emit('getChatrooms');
+			socket.emit('getChatrooms'); 	// dispatch an event getChatrooms	
 
 			// Event listener for chatRoomsList
 			socket.on('chatRoomsList', chatrooms => {

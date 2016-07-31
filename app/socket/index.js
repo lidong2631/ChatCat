@@ -2,10 +2,10 @@
 const h = require('../helpers');
 
 module.exports = (io, app) => {
-	let allrooms = app.locals.chatrooms;
-
-	io.of('/roomslist').on('connection', socket => {
-		// console.log('socket.io connected!');
+	let allrooms = app.locals.chatrooms; // define application level variable. can be accessed through app.variable
+																			 // or req
+	io.of('/roomslist').on('connection', socket => {	// listen to /roomslist pipeline. when a user connect a socket instance of the user will pass in
+		// console.log('socket.io connected!');					// all communication will be done through the instance of the socket
 
 		socket.on('getChatrooms', () => {
 			socket.emit('chatRoomsList', JSON.stringify(allrooms));

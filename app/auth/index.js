@@ -7,12 +7,13 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
 
 module.exports = () => {
-	passport.serializeUser((user, done) => {		// store user infomation into mongoDB
+	passport.serializeUser((user, done) => {		// serialize method called when auth ends (after run done() in authProcessor). 
+																							// passport will pass in user profile data and only store user id into session
 		done(null, user.id);				// this is the id mongoDB assigned to user
 	});
 
-	passport.deserializeUser((id, done) => {		// when deserializeUser from mongoDB, the user info is availabie through req object with variable user
-		// Find the user using _id
+	passport.deserializeUser((id, done) => {		// whenever a request with that data is received, passport fetch id from session and deserialize from mongodb
+		// Find the user from mongodb using _id
 		h.findById(id)
 			.then(user => done(null, user))
 			.catch(error => logger.log('error', 'Error when deserializing the user: ' + error));

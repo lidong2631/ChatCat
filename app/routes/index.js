@@ -18,9 +18,10 @@ module.exports = () => {
 			'/chat/:id': [h.isAuthenticated, (req, res, next) => {
 				// Find a chat room with the given id
 				// Render if id is found
-				let getRoom = h.findRoomById(req.app.locals.chatrooms, req.params.id);
+				let getRoom = h.findRoomById(req.app.locals.chatrooms, req.params.id);	// Here use app.locals.chatrooms through req
 				if (getRoom === undefined) {
-					return next();
+					return next();		// if we invoke next(), the rest of route handler is ignored and control jumps to next route handler middleware inline
+														// since nothing match, control pass to 404 page
 				} else {
 					res.render('chatroom', {
 						user: req.user,

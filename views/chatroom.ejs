@@ -56,10 +56,10 @@
 		}
 
 		chatInput.on('keyup', function (evt) { 	// no error in callback because we need to access to this. error creates new this
-			evt.preventDefault();
+			evt.preventDefault(); 		// the default action of the event will not be triggered because we want to take control of the event
 			let messageFld = $(this);
-			if (evt.which === 13 && messageFld.val() !== '') {
-console.log('lalala');
+			if (evt.which === 13 && messageFld.val() !== '') {	// 13 represents enter keycode
+// console.log('lalala');
 				socket.emit('newMessage', {
 					roomID,
 					user,
